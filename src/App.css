@@ -1,38 +1,107 @@
-.App {
+.app {
+  padding: 24px;
+}
+
+.controls-wrapper {
+  margin-bottom: 32px;
+}
+
+.controls-wrapper .item {
+  margin-bottom: 24px;
+}
+
+.image-wrapper {
+  width: 512px;
+  height: 512px;
+  position: relative;
+  color: #fff;
+}
+
+.bg-purple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.75;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8b2aaf, #ae59cb) border-box;
+}
+.controls-wrapper div {
+  margin: 8px 0;
+}
+.image1 img {
+  width: 100%;
+  min-height: 100%;
+}
+
+.image1 {
+  width: 100%;
+  height: 100%;
+}
+
+.h-header {
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  flex: 1;
+  margin: 24px 0;
+}
+.subtitle {
+  font-size: 24px;
+  margin-left: 8px;
+}
+.subtitle img {
+  height: 24px;
+  color: white;
+  fill: white;
+}
+.date {
+  font-family: cursive;
+  font-size: 32px;
+}
+
+.h-body {
+  padding: 0 32px;
+}
+
+.title,
+.description {
+  font-size: 32px;
+}
+
+.description textarea {
+  width: 100%;
+  color: white;
+  font-size: 24px;
+  font-family: sans-serif;
+  background: none;
+  border: none;
+  resize: none;
+  outline: none;
+  text-align: center;
+  line-height: 1.33;
+  max-height: 300px;
+  overflow-y: hidden;
+  padding: 0;
+}
+
+.horoscopo-logo {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.horoscopo-logo img {
+  height: 80px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo img {
+  height: 100px;
 }
