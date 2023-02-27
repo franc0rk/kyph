@@ -1,15 +1,13 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HOROSCOPES, HOROSCOPE_TYPES, MONTHS } from "./constants";
 import { downloadImage } from "./utils";
-
-const currentDate = new Date();
 
 function App() {
   const handleDownloadImage = () => {
     downloadImage(
       document.querySelector(".image-wrapper"),
-      `${selectedHoroscope}.jpeg`
+      `${selectedHoroscope}-${selectedHoroscopeType}-${currentDate}.jpeg`
     );
   };
 
@@ -34,6 +32,16 @@ function App() {
   const [selectedHoroscope, setSelectedHoroscope] = useState("acuario");
   const [selectedHoroscopeType, setSelectedHoroscopeType] = useState("General");
   const [horoscopeText, setHoroscopeText] = useState("Pegar texto...");
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const date = new Date();
+    setCurrentDate(
+      `${date.toLocaleString().split("/")[1]} ${
+        MONTHS[date.getMonth()]
+      } ${date.getFullYear()}`
+    );
+  }, []);
 
   return (
     <div className="app">
@@ -42,6 +50,7 @@ function App() {
           <label>Horoscopo: </label>
           <br />
           <select
+            name="selected-horoscope"
             value={selectedHoroscope}
             onChange={(e) => setSelectedHoroscope(e.target.value)}
           >
@@ -56,6 +65,7 @@ function App() {
           <label>Tipo: </label>
           <br />
           <select
+            name="selected-horoscope-type"
             value={selectedHoroscopeType}
             onChange={(e) => setSelectedHoroscopeType(e.target.value)}
           >
@@ -71,7 +81,9 @@ function App() {
           <small>{horoscopeText.length} characters</small>
         </div>
         <div>
-          <button onClick={handleDownloadImage}>Descargar</button>
+          <button onClick={handleDownloadImage} id="download-btn">
+            Descargar
+          </button>
         </div>
       </div>
       <div className="image-wrapper">
@@ -91,15 +103,12 @@ function App() {
                 </span>
               )}
             </div>
-            <div className="date">
-              {`${currentDate.toLocaleString().split("/")[1]} ${
-                MONTHS[currentDate.getMonth()]
-              } ${currentDate.getFullYear()}`}
-            </div>
+            <div className="date">{currentDate}</div>
           </div>
           <div className="h-body">
             <div className="description">
               <textarea
+                name="horoscope-text"
                 cols="40"
                 value={horoscopeText}
                 rows="12"
